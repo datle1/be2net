@@ -5422,6 +5422,7 @@ static int be_tpe_recover(struct be_adapter *adapter)
 static int be_err_recover(struct be_adapter *adapter)
 {
 	int status;
+	struct device *dev = &adapter->pdev->dev;
 
 	if (!lancer_chip(adapter)) {
 		if (!adapter->error_recovery.recovery_supported ||
@@ -5441,9 +5442,12 @@ static int be_err_recover(struct be_adapter *adapter)
 
 	adapter->flags |= BE_FLAGS_TRY_RECOVERY;
 
+	dev_info(dev, "@@@ Start be_cleanup\n");
 	be_cleanup(adapter);
-
+	dev_info(dev, "@@@ End be_cleanup\n");
 	status = be_resume(adapter);
+	dev_info(dev, "@@@ End be_resume\n");
+
 	if (status)
 		goto err;
 
