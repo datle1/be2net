@@ -5265,11 +5265,11 @@ static void be_cleanup(struct be_adapter *adapter)
 	netif_device_detach(netdev);
 	if (netif_running(netdev))
 		be_close(netdev);
-	// be_clear(adapter);
+	be_clear(adapter);
 	rtnl_unlock();
 
 	// Fix bug: move be_clear into rtnl_lock
-	be_clear(adapter);
+	// be_clear(adapter);
 }
 
 static int be_resume(struct be_adapter *adapter)
