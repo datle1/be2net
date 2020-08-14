@@ -5265,8 +5265,11 @@ static void be_cleanup(struct be_adapter *adapter)
 	netif_device_detach(netdev);
 	if (netif_running(netdev))
 		be_close(netdev);
-	be_clear(adapter);
+	// be_clear(adapter);
 	rtnl_unlock();
+
+	// Fix bug: move be_clear into rtnl_lock
+	be_clear(adapter);
 }
 
 static int be_resume(struct be_adapter *adapter)
@@ -5441,11 +5444,11 @@ static int be_err_recover(struct be_adapter *adapter)
 
 	adapter->flags |= BE_FLAGS_TRY_RECOVERY;
 
-	dev_info(dev, "@@@ Start be_cleanup\n");
+	dev_info(dev, "Start cleaning up adapter\n");
 	be_cleanup(adapter);
-	dev_info(dev, "@@@ End be_cleanup\n");
+	dev_info(dev, "Start resuming adapter\n");
 	status = be_resume(adapter);
-	dev_info(dev, "@@@ End be_resume\n");
+	dev_info(dev, "Finish to recover adapter\n");
 
 	if (status)
 		goto err;
