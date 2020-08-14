@@ -1,8 +1,11 @@
 ## Môi trường build
+
 - Kernel 3.10.0-957.48.1.el7.x86_64
 - Cài đặt thêm gói kernel-devel-3.10.0-957.48.1.el7.x86_64.rpm
 - Download gói của kernel-3.10.0-957.48.1.el7.x86_64.src.rpm từ redhat repo
+
 ## Build driver
+
 - Extract source từ kernel-3.10.0-957.48.1.el7.x86_64.src.rpm
 - Copy file ".config" và "Module.symvers" từ /usr/src/kernels/3.10.0-957.48.1.el7.x86_64/ vào kernel-3.10.0-957.48.1.el7.src/linux-3.10.0-957.48.1.el7/
 - Cd linux-3.10.0-957.48.1.el7
@@ -38,7 +41,9 @@ vermagic:       3.10.0 SMP mod_unload modversions
 parm:           num_vfs:Number of PCI VFs to initialize (uint)
 parm:           rx_frag_size:Size of a fragment that holds rcvd data. (ushort)
 ```
+
 ## Install driver
+
 - Nén file driver thành be2net.ko.xz và copy vào đường dẫn mặc định theo driver hiện tại `/lib/modules/3.10.0-957.5.1.el7.x86_64/kernel/drivers/net/ethernet/emulex/benet/be2net.ko.xz`
 ```
 [root@monitor49 ~]# modinfo be2net
