@@ -19,8 +19,8 @@ make SUBDIRS=drivers/net/ethernet/emulex/benet modules
 - Driver build thành công: drivers/net/ethernet/emulex/benet/be2net.ko
 - Check thông tin driver sau khi build
 ```
-[root@hlc5fcom189 ~]# modinfo /home/vt_admin/build/linux-3.10.0-957.48.1.el7/drivers/net/ethernet/emulex/benet/be2net.ko
-filename:       /home/vt_admin/build/linux-3.10.0-957.48.1.el7/drivers/net/ethernet/emulex/benet/be2net.ko
+[root@root ~]# modinfo /home/admin/build/linux-3.10.0-957.48.1.el7/drivers/net/ethernet/emulex/benet/be2net.ko
+filename:       /home/admin/build/linux-3.10.0-957.48.1.el7/drivers/net/ethernet/emulex/benet/be2net.ko
 license:        GPL
 author:         Emulex Corporation
 description:    Emulex OneConnect NIC Driver 11.4.0.0r
@@ -46,7 +46,7 @@ parm:           rx_frag_size:Size of a fragment that holds rcvd data. (ushort)
 
 - Nén file driver thành be2net.ko.xz và copy vào đường dẫn mặc định theo driver hiện tại `/lib/modules/3.10.0-957.5.1.el7.x86_64/kernel/drivers/net/ethernet/emulex/benet/be2net.ko.xz`
 ```
-[root@monitor49 ~]# modinfo be2net
+[root@root ~]# modinfo be2net
 filename:       /lib/modules/3.10.0-957.5.1.el7.x86_64/kernel/drivers/net/ethernet/emulex/benet/be2net.ko.xz
 license:        GPL
 author:         Emulex Corporation
@@ -74,7 +74,7 @@ parm:           rx_frag_size:Size of a fragment that holds rcvd data. (ushort)
 ```
 - Check lại driver
 ```
-[root@hlc5fcom189 ~]# modinfo be2net
+[root@root ~]# modinfo be2net
 filename:       /lib/modules/3.10.0-957.48.1.el7.x86_64/kernel/drivers/net/ethernet/emulex/benet/be2net.ko.xz
 license:        GPL
 author:         Emulex Corporation
@@ -104,7 +104,7 @@ modprobe be2net
 ```
 - Check lại thông tin driver apply trên NIC:
 ```
-[root@hlc5fcom189 linux-3.10.0-957.48.1.el7]# ethtool -i enp3s0f0
+[root@ linux-3.10.0-957.48.1.el7]# ethtool -i enp3s0f0
 driver: be2net
 version: 11.4.0.0r-patch-DATLE
 firmware-version: 10.2.630.0
